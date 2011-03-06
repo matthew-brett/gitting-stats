@@ -68,4 +68,32 @@ To show all the authors with their commit ids::
       git log | grep '^Author' | cut -d' ' -f 2- | sort | uniq
 
 
+Repo statistics collected by application of commands like::
 
+    git co master
+    git log --name-only --follow --all -- nipy/fixes/scipy/stats/models/__init__.py
+
+then checking out the commit where the trail goes cold to see where the files
+went::
+
+    lib/statistics
+    lib/neuroimaging/statistics
+    lib/neuroimaging/algorithms/statistics
+    neuroimaging/algorithms/statistics
+    nipy/algorithms/statistics
+
+    neuroimaging/fixes/scipy/stats_models
+    neuroimaging/fixes/scipy/stats/models
+    nipy/fixes/scipy/stats/models
+
+When moving away from nipy, Skipper first moved everything to a ``models`` top
+level directory, and thence to ``scikits``.  We can probably safely delete
+top-level nipy stuff like::
+
+    doc
+    examples
+    fff2.py
+    libfffpy
+    setup_egg.py
+    setup_fff2.py
+    tools
